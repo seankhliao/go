@@ -1,8 +1,13 @@
-# go
+# go - nightly build
 
-[![Go Reference][pkgsitebadge]][pkgsite]
-[![License][licensebadge]](LICENSE)
+A nightly build of the [Go] toolchain (using github actions)
+with [ko], [skaffold], and [staticcheck] installed.
 
-[licensebadge]: https://img.shields.io/github/license/seankhliao/go.svg?style=flat-square
-[pkgsitebadge]: https://pkg.go.dev/badge/go.seankhliao.com/go.svg
-[pkgsite]: https://pkg.go.dev/go.seankhliao.com/go
+Artifacts:
+
+- [`ghcr.io/seankhliao/go:tip`](https://github.com/seankhliao/go/pkgs/container/go)
+
+[go]: https://go.dev/
+[ko]: https://github.com/ko-build/ko
+[skaffold]: https://github.com/GoogleContainerTools/skaffold
+[staticcheck]: https://github.com/dominikh/go-tools
