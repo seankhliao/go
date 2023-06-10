@@ -1,0 +1,12 @@
+steps:
+  - label: "arm64 build"
+    command:
+      - "docker build --platform linux/arm64 --tag ghcr.io/seankhliao/go:tip go"
+  - label: "amd64 build"
+    command:
+      - "docker build --platform linux/amd64 --tag ghcr.io/seankhliao/go:tip go"
+
+  - wait
+  - label: "push"
+    command:
+      - "docker push ghcr.io/seankhliao/go:tip"
