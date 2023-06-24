@@ -1,22 +1,22 @@
 steps:
   - label: "arm64 build"
     command:
-      - "docker build --platform linux/arm64/v8 --tag ghcr.io/seankhliao/go:tip-arm64 go"
+      - "docker build --no-cache --platform linux/arm64/v8 --tag ghcr.io/seankhliao/go:tip-arm64 go"
       - "docker push ghcr.io/seankhliao/go:tip-arm64"
-  - label: "amd64 build"
-    command:
-      - "docker build --platform linux/amd64 --tag ghcr.io/seankhliao/go:tip-amd64 go"
-      - "ghcr.io/seankhliao/go:tip-amd64"
-
-  - wait
-  - label: "push"
-    plugins:
-      - docker#v5.7.0:
-          platform: linux/arm64/v8
-          image: "golang:alpine"
-          command:
-            - /bin/sh
-            - -c
-            - |
-              go install github.com/google/go-containerregistry/cmd/crane@latest
-              crane index append -m ghcr.io/seankhliao/go:tip-arm64 -m ghcr.io/seankhliao/go:tip-amd64 -t ghcr.io/seankhliao/go:tip
+  # - label: "amd64 build"
+  #   command:
+  #     - "docker build --platform linux/amd64 --tag ghcr.io/seankhliao/go:tip-amd64 go"
+  #     - "ghcr.io/seankhliao/go:tip-amd64"
+  #
+  # - wait
+  # - label: "push"
+  #   plugins:
+  #     - docker#v5.7.0:
+  #         platform: linux/arm64/v8
+  #         image: "golang:alpine"
+  #         command:
+  #           - /bin/sh
+  #           - -c
+  #           - |
+  #             go install github.com/google/go-containerregistry/cmd/crane@latest
+  #             crane index append -m ghcr.io/seankhliao/go:tip-arm64 -m ghcr.io/seankhliao/go:tip-amd64 -t ghcr.io/seankhliao/go:tip
