@@ -1,7 +1,7 @@
 steps:
   - label: "arm64 build"
     command:
-      - "docker system prune -all --force"
+      - "docker system prune --all --force"
       - "docker build --no-cache --platform linux/arm64/v8 --tag ghcr.io/seankhliao/go:tip-arm64 go"
       - "docker push ghcr.io/seankhliao/go:tip-arm64"
   # - label: "amd64 build"
