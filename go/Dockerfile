@@ -3,6 +3,7 @@ FROM golang:alpine AS build
 ENV CGO_ENABLED=0
 ENV GOFLAGS="-trimpath"
 ENV GOBIN=/usr/local/bin
+ENV GOEXPERIMENT=gocacheprog
 RUN apk add --no-cache bash curl gcc git musl-dev
 RUN go install golang.org/dl/gotip@latest
 RUN gotip download
