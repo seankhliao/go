@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1
 FROM golang:alpine AS build
 ENV CGO_ENABLED=0
+RUN apk add --no-cache bash curl gcc git musl-dev
+RUN go install golang.org/dl/gotip@latest
 ENV GOFLAGS="-trimpath"
 ENV GOBIN=/usr/local/bin
 ENV GOEXPERIMENT=gocacheprog
-RUN apk add --no-cache bash curl gcc git musl-dev
-RUN go install golang.org/dl/gotip@latest
 RUN gotip download
 RUN rm -rf /root/sdk/gotip/pkg/linux_*
 RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/builds/latest/skaffold-linux-amd64
