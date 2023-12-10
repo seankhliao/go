@@ -13,6 +13,7 @@ ENV PATH=/root/go/bin:$PATH
 RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/builds/latest/skaffold-linux-amd64
 RUN go install -ldflags='-s -w' github.com/google/ko@latest
 RUN go install -ldflags='-s -w' honnef.co/go/tools/cmd/staticcheck@latest
+RUN go install golang.org/x/vuln/cmd/govulncheck@latest
 RUN chmod +x /usr/local/bin/skaffold
 
 FROM alpine
